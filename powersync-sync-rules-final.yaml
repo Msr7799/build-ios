@@ -1,0 +1,13 @@
+bucket_definitions:
+  global:
+    data:
+      - SELECT * FROM "Unit"
+      - SELECT * FROM "Booking"
+      - SELECT * FROM "DateBlock"
+      - SELECT * FROM "RateRule"
+      - SELECT * FROM "Expense"
+      - SELECT * FROM "Payout"
+      - SELECT * FROM "PayoutLine"
+      - SELECT * FROM "ChannelListing"
+      - SELECT * FROM "IcalFeed"
+      - SELECT * FROM "UnitContent"

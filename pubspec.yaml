@@ -1,0 +1,63 @@
+name: pms_lite
+description: "PMS Lite - Property Management System"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.0
+  provider: ^6.1.0
+  intl: ^0.20.2
+  shared_preferences: ^2.3.0
+  cached_network_image: ^3.4.0
+  table_calendar: ^3.1.0
+  fl_chart: ^0.69.0
+  google_fonts: ^6.2.0
+  postgres: ^3.5.0
+  file_picker: ^8.0.0
+  csv: ^6.0.0
+  excel: ^4.0.6
+  powersync: ^1.9.0
+  path_provider: ^2.1.0
+  path: ^1.9.0
+  share_plus: ^10.0.0
+  pdf: ^3.11.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/app-icon.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/app-icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#0B1220"
+  adaptive_icon_foreground: "assets/app-icon.png"
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/app-icon.png"
+  windows:
+    generate: true
+    image_path: "assets/app-icon.png"
+  macos:
+    generate: true
+    image_path: "assets/app-icon.png"
+  linux:
+    generate: true
+    image_path: "assets/app-icon.png"
