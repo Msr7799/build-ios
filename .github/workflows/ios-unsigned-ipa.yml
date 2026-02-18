@@ -1,7 +1,14 @@
+# @format
+
 name: Build iOS Unsigned IPA (Flutter)
 
 on:
   workflow_dispatch:
+
+env:
+  APP_DIR: "."
+  FLUTTER_CHANNEL: "stable"
+  FLUTTER_VERSION: "3.19.0" # Optional: Pin specific version if needed
 
 jobs:
   build:
@@ -14,23 +21,39 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          channel: ${{ env.FLUTTER_CHANNEL }}
           cache: true
+
+      - name: Flutter version
+        run: flutter --version
+        working-directory: ${{ env.APP_DIR }}
 
       - name: Flutter Pub Get
         run: flutter pub get
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: Install CocoaPods
+        run: |
+          # Use the existing Podfile
+          cd ios
+          pod install --repo-update
+        working-directory: ${{ env.APP_DIR }}
 
       - name: Build iOS (no codesign)
+        # Build specifically for iOS devices (generic/any ios device) to generate Runner.app
         run: flutter build ios --release --no-codesign
+        working-directory: ${{ env.APP_DIR }}
 
       - name: Package unsigned IPA
         run: |
           mkdir -p Payload
+          # The path typically is build/ios/iphoneos/Runner.app
           cp -R build/ios/iphoneos/Runner.app Payload/
-          /usr/bin/zip -r Runner-unsigned.ipa Payload
+          zip -r Runner-unsigned.ipa Payload
+        working-directory: ${{ env.APP_DIR }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Runner-unsigned-ipa
-          path: Runner-unsigned.ipa
+          path: ${{ env.APP_DIR }}/Runner-unsigned.ipa
