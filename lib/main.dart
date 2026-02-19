@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'config/app_theme.dart';
 import 'providers/app_provider.dart';
 import 'services/powersync_service.dart';
@@ -16,9 +17,18 @@ import 'screens/payouts_screen.dart';
 import 'screens/reports_screen.dart';
 import 'screens/notes_screen.dart';
 import 'screens/settings_screen.dart';
+import 'simsar/simsar_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Load environment variables
+  try {
+    await dotenv.load(fileName: '.env');
+    print('✅ Environment variables loaded');
+  } catch (e) {
+    print('⚠️ Could not load .env file: $e');
+  }
 
   // Initialize PowerSync with error handling
   try {
@@ -69,6 +79,7 @@ class _AppShellState extends State<AppShell> {
     DashboardScreen(),
     UnitsScreen(),
     CalendarScreen(),
+    SimsarScreen(),
     BookingsScreen(),
     ContentScreen(),
     PublishingScreen(),

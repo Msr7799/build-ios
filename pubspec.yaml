@@ -29,6 +29,9 @@ dependencies:
   path: ^1.9.0
   share_plus: ^10.0.0
   pdf: ^3.11.0
+  speech_to_text: ^7.0.0
+  flutter_dotenv: ^5.2.1
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +43,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/app-icon.png
+    - .env
 
 flutter_launcher_icons:
   android: true

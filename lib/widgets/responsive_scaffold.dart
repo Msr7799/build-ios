@@ -12,6 +12,7 @@ const List<NavItem> navItems = [
   NavItem(Icons.dashboard_rounded, 'Dashboard', 'الرئيسية'),
   NavItem(Icons.apartment_rounded, 'Units', 'الوحدات'),
   NavItem(Icons.calendar_month_rounded, 'Calendar', 'التقويم'),
+  NavItem(Icons.smart_toy_rounded, 'Simsar', 'سمسار'),
   NavItem(Icons.book_rounded, 'Bookings', 'الحجوزات'),
   NavItem(Icons.edit_note_rounded, 'Content', 'المحتوى'),
   NavItem(Icons.publish_rounded, 'Publishing', 'النشر'),
